@@ -1,4 +1,9 @@
 import React from 'react';
 import Feather from 'react-native-vector-icons/Feather';
+import {StyleProp, TextStyle} from 'react-native';
 
-export const BriefCaseIcon = () => <Feather name="briefcase" size={50} color="#fff" />;
+type IconPropsType = {
+    style: StyleProp<TextStyle>
+}
+
+export const BriefCaseIcon = ({style}: IconPropsType) => <Feather style={style} name="briefcase" size={64} color="#fff" />;
