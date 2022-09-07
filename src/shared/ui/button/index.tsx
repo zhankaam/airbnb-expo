@@ -1,10 +1,12 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
+type ObjValueOfNumAndStr = Record<string, string | number>;
+
 type PropsType = {
     text: string,
-    buttonCustomStyles: Record<string, string | number>,
-    textCustomStyles: Record<string, string | number>,
+    buttonCustomStyles:  ObjValueOfNumAndStr | Array<ObjValueOfNumAndStr>,
+    textCustomStyles: ObjValueOfNumAndStr,
     onClick(): void
 }
 
