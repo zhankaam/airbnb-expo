@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text } from 'react-native';
+import styles from './styled';
 
 type ObjValueOfNumAndStr = Record<string, string | number>;
 
@@ -10,29 +11,14 @@ type PropsType = {
     onClick(): void
 }
 
-const Button = ({ text = 'Button', buttonCustomStyles, textCustomStyles, onClick }: PropsType) => {
+const Button = ({ text = 'Button', buttonCustomStyles, textCustomStyles, onClick }: Partial<PropsType>) => {
     return (
         <TouchableOpacity style={[styles.button, buttonCustomStyles]} onPress={onClick}>
-            <Text
-                style={[styles.text, textCustomStyles]}>
+            <Text style={[styles.text, textCustomStyles]}>
                 {text}
             </Text>
         </TouchableOpacity>
     );
 };
-
-const styles = StyleSheet.create({
-    button: {
-        width: 200,
-        height: 40,
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    text: {
-        fontWeight: '500',
-        padding: 3
-    },
-});
 
 export default Button;

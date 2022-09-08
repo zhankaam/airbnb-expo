@@ -2,9 +2,9 @@ import React from 'react';
 import {ImageBackground, Text, SafeAreaView, View, Pressable } from 'react-native';
 import {BriefCaseIcon} from '../../shared/icons';
 import CustomButton from '../../shared/ui/button';
+import {COLORS} from '../../app/colors';
 
 import styles from './styled';
-import {COLORS} from '../../app/colors';
 
 const Home = () => (
     <SafeAreaView style={styles.container}>

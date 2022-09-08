@@ -1,4 +1,8 @@
 export const COLORS = {
     WHITE: '#FFFFFF',
-    LIGHT_RED: '#FF5A60'
+    LIGHT_RED: '#FF5A60',
+    SECONDARY_BLACK: '#262626',
+    BLACK: '#000000',
+    GREY: '#C2C2C2',
+    SECONDARY_GREY: '#D8D8D8',
 };
