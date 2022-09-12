@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     loginButton: {
-        alignSelf: 'center'
+        alignSelf: 'center',
     },
     loginButtonText: {
         fontSize: 20,

@@ -2,17 +2,17 @@ import React from 'react';
 import AuthenticationLayout from '../../shared/ui/authentication-layout';
 import styles from './styled';
 
-const SignUp = () => {
+function Login() {
     return (
         <AuthenticationLayout
-            title="Sign Up"
-            submitButtonName="Sign up"
-            footerButtonName="Log in"
-            footerTitle="Already have an account?"
+            title="Log in"
+            submitButtonName="Log in"
+            footerButtonName="Sign up"
+            footerTitle="Do you need an account?"
             buttonCustomStyles={styles.button}
             footerButtonStyles={styles.footerButton}
         />
     );
-};
+}
 
-export default SignUp;
+export default Login;

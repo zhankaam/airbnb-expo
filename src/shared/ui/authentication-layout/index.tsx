@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pressable, Text, View} from 'react-native';
+import {Pressable, StyleProp, Text, TextStyle, View} from 'react-native';
 import {BriefCaseIcon} from '../../icons';
 import {COLORS} from '../../../app/colors';
 import Input from '../input';
@@ -7,23 +7,19 @@ import CustomButton from '../button';
 
 import styles from './styled';
 
-type PropsType = Record<
-    'title' |
-    'submitButtonName' |
-    'footerButtonName' |
-    'footerTitle', string> & {
-    buttonCustomStyles: Record<string, string | number>,
-    footerButtonStyles: Record<string, string | number>
-}
+type StringValues = Record<'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle', string>;
+type StyleProps = Record<'buttonCustomStyles' | 'footerButtonStyles', StyleProp<TextStyle>>;
 
-const Form = ({
+type PropsType = StringValues & StyleProps;
+
+const AuthenticationLayout = ({
     title,
     submitButtonName,
     footerButtonName,
     footerTitle,
     buttonCustomStyles,
     footerButtonStyles,
-}: PropsType) => {
+}: Partial<PropsType>) => {
     return (
         <View style={styles.container}>
             <View style={styles.section}>
@@ -56,14 +52,14 @@ const Form = ({
             <View>
                 <Text style={styles.footerText}>{footerTitle}</Text>
                 <Pressable
-                    style={[styles.loginButton, footerButtonStyles]}
+                    style={styles.loginButton}
                     // onPress={() => console.log('pressed')}
                 >
-                    <Text style={styles.loginButtonText}>{footerButtonName}</Text>
+                    <Text style={[styles.loginButtonText, footerButtonStyles]}>{footerButtonName}</Text>
                 </Pressable>
             </View>
         </View>
     );
 };
 
-export default Form;
+export default AuthenticationLayout;
