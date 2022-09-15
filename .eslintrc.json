@@ -7,7 +7,8 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
     ],
     "overrides": [
     ],
@@ -18,9 +19,63 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "import",
+        "@typescript-eslint",
+        "prettier"
     ],
     "rules": {
+        "semi": "error",
+        "semi-style": "error",
+        "no-extra-semi": "error",
+        "no-shadow": "off",
+        "no-alert": "error",
+        "no-debugger": "error",
+        "no-plusplus": "error",
+        "no-unused-vars": "off",
+        "no-unused-expressions": "error",
+        "prettier/prettier": "error",
+        "no-multiple-empty-lines": [
+            "off", { "max": 1 }
+        ],
+        "import/extensions": "off",
+        "sort-imports": [
+            "error", {
+                "ignoreCase": true, "ignoreDeclarationSort": true
+        }],
+        "import/order": [
+            "error",
+            {
+                "newlines-between": "always",
+                "pathGroupsExcludedImportTypes": [
+                    "react"
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                },
+                "groups": [
+                    [
+                        "external", "builtin"
+                    ],
+                    "internal",
+                    [
+                        "sibling", "parent"
+                    ],
+                    "index"
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "@(react|react-native)",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@src/**",
+                        "group": "internal"
+                    }
+                ]
+            }
+        ],
         "indent": [
             "error",
             4
@@ -32,10 +87,6 @@
         "quotes": [
             "error",
             "single"
-        ],
-        "semi": [
-            "error",
-            "always"
         ]
     }
 }

@@ -1,15 +1,16 @@
-import {StyleSheet} from 'react-native';
-import {COLORS} from '../colors';
+import { StyleSheet } from 'react-native'
 
- const globalStyles = StyleSheet.create({
-    text: {
-        color: COLORS.WHITE,
-        fontFamily: 'PingFangHK-Regular',
-    },
-     primaryText: {
-         fontFamily: 'PingFangHK-Regular',
-         fontWeight: '700',
-     }
-});
+import { COLORS } from '../colors'
 
-export default globalStyles;
+const globalStyles = StyleSheet.create({
+  text: {
+    color: COLORS.WHITE,
+    fontFamily: 'PingFangHK-Regular',
+  },
+  primaryText: {
+    fontFamily: 'PingFangHK-Regular',
+    fontWeight: '700',
+  },
+})
+
+export default globalStyles
