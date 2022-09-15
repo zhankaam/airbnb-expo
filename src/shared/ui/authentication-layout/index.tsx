@@ -5,12 +5,16 @@ import {COLORS} from '../../../app/colors';
 import Input from '../input';
 import CustomButton from '../button';
 
+import globalStyles from '../../../app/global-styles';
+
 import styles from './styled';
 
 type StringValues = Record<'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle', string>;
 type StyleProps = Record<'buttonCustomStyles' | 'footerButtonStyles', StyleProp<TextStyle>>;
 
-type PropsType = StringValues & StyleProps;
+type PropsType = StringValues & StyleProps & {
+    onFooterTextPress(): void;
+};
 
 const AuthenticationLayout = ({
     title,
@@ -19,6 +23,7 @@ const AuthenticationLayout = ({
     footerTitle,
     buttonCustomStyles,
     footerButtonStyles,
+    onFooterTextPress,
 }: Partial<PropsType>) => {
     return (
         <View style={styles.container}>
@@ -28,7 +33,7 @@ const AuthenticationLayout = ({
                     name="briefcase"
                     size={64}
                     color={COLORS.LIGHT_RED} />
-                <Text style={styles.title}>{title}</Text>
+                <Text style={[styles.title, globalStyles.primaryText]}>{title}</Text>
             </View>
             <View>
                 <Input
@@ -46,16 +51,18 @@ const AuthenticationLayout = ({
             <CustomButton
                 text={`${submitButtonName} (skip)`}
                 buttonCustomStyles={[styles.button, buttonCustomStyles]}
-                textCustomStyles={styles.buttonText}
+                textCustomStyles={[styles.buttonText, globalStyles.text]}
                 onClick={() => { alert('Clicked!'); }}
             />
             <View>
-                <Text style={styles.footerText}>{footerTitle}</Text>
+                <Text style={[styles.footerText, globalStyles.primaryText]}>{footerTitle}</Text>
                 <Pressable
                     style={styles.loginButton}
-                    // onPress={() => console.log('pressed')}
+                    onPress={onFooterTextPress}
                 >
-                    <Text style={[styles.loginButtonText, footerButtonStyles]}>{footerButtonName}</Text>
+                    <Text style={[styles.loginButtonText, globalStyles.primaryText, footerButtonStyles]}>
+                        {footerButtonName}
+                    </Text>
                 </Pressable>
             </View>
         </View>

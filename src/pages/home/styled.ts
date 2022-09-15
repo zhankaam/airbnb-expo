@@ -1,6 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {COLORS} from '../../app/colors';
-import {textStyles} from '../../app/global-styles';
 
 const win = Dimensions.get('window');
 
@@ -22,20 +21,17 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     name: {
-        ...textStyles,
         fontWeight: '700',
         fontSize: 34,
         marginBottom: 100
     },
     title: {
-        ...textStyles,
         fontSize: 30,
         fontWeight: '400',
         letterSpacing: 2.6,
         marginBottom: 50
     },
     text: {
-        ...textStyles,
         fontSize: 20,
         fontWeight: '600',
         alignSelf: 'flex-start',
@@ -59,14 +55,12 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     loginButtonText: {
-        ...textStyles,
         fontSize: 16,
     },
     skipButton: {
         alignSelf: 'flex-start'
     },
     skipButtonText: {
-        ...textStyles,
         fontSize: 20,
         fontWeight: '600',
     },

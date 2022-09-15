@@ -1,16 +1,12 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {SafeAreaView} from 'react-native';
-import Login from './src/pages/login';
-// import Home from './src/pages/home';
-import SignUp from './src/pages/sign-up';
+import Navigate from './src/entities/navigation';
 
 function App() {
     return (
         <SafeAreaView style={{ flex: 1 }}>
-            {/* <Home /> */}
-            <SignUp />
-            {/* <Login /> */}
+            <Navigate />
             <StatusBar style="auto" />
         </SafeAreaView>
     );

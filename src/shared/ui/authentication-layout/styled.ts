@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../../app/colors';
-import {textStyles} from '../../../app/global-styles';
 
 const styles = StyleSheet.create({
     container: {
@@ -18,8 +17,6 @@ const styles = StyleSheet.create({
         marginBottom: 60,
     },
     title: {
-        fontFamily: 'PingFangHK-Regular',
-        fontWeight: '700',
         color: COLORS.BLACK,
         fontSize: 25,
     },
@@ -39,23 +36,18 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     buttonText: {
-        ...textStyles,
         fontSize: 20,
         fontWeight: '700',
     },
     footerText: {
         color: COLORS.GREY,
         fontSize: 16,
-        fontFamily: 'PingFangHK-Regular',
-        fontWeight: '700',
     },
     loginButton: {
         alignSelf: 'center',
     },
     loginButtonText: {
         fontSize: 20,
-        fontFamily: 'PingFangHK-Regular',
-        fontWeight: '700',
     }
 });
 
