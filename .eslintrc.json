@@ -24,15 +24,12 @@
         "prettier"
     ],
     "rules": {
-        "semi": "error",
-        "semi-style": "error",
-        "no-extra-semi": "error",
         "no-shadow": "off",
         "no-alert": "error",
         "no-debugger": "error",
         "no-plusplus": "error",
         "no-unused-vars": "off",
-        "no-unused-expressions": "error",
+        "no-unused-expressions": "off",
         "prettier/prettier": "error",
         "no-multiple-empty-lines": [
             "off", { "max": 1 }
@@ -75,10 +72,6 @@
                     }
                 ]
             }
-        ],
-        "indent": [
-            "error",
-            4
         ],
         "linebreak-style": [
             "error",

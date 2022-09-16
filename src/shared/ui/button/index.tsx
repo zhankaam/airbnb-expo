@@ -1,14 +1,14 @@
-import React from 'react'
-import { StyleProp, Text, TextStyle, TouchableOpacity } from 'react-native'
+import React from 'react';
+import { StyleProp, Text, TextStyle, TouchableOpacity } from 'react-native';
 
-import styles from './styled'
+import styles from './styled';
 
 type PropsType = {
-  text: string
-  buttonCustomStyles: StyleProp<TextStyle>
-  textCustomStyles: StyleProp<TextStyle>
-  onClick(): void
-}
+  text: string;
+  buttonCustomStyles: StyleProp<TextStyle>;
+  textCustomStyles: StyleProp<TextStyle>;
+  onClick(): void;
+};
 
 const Button = ({
   text = 'Button',
@@ -20,7 +20,7 @@ const Button = ({
     <TouchableOpacity style={[styles.button, buttonCustomStyles]} onPress={onClick}>
       <Text style={[styles.text, textCustomStyles]}>{text}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

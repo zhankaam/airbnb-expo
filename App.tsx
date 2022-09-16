@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 
-import Navigate from './src/entities/navigation'
+import Navigate from './src/entities/navigation';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Navigate />
       <StatusBar style="auto" />
     </SafeAreaView>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,8 +1,8 @@
-import { Dimensions, StyleSheet } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native';
 
-import { COLORS } from '../../app/colors'
+import { COLORS } from 'src/app/colors';
 
-const win = Dimensions.get('window')
+const win = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '600',
   },
-})
+});
 
-export default styles
+export default styles;

@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
-import { COLORS } from '../../../app/colors'
+import { COLORS } from 'src/app/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
   loginButtonText: {
     fontSize: 20,
   },
-})
+});
 
-export default styles
+export default styles;

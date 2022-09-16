@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
@@ -12,6 +12,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     padding: 3,
   },
-})
+});
 
-export default styles
+export default styles;

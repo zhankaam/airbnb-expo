@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParams } from 'src/entities/navigation';
 
-import AuthenticationLayout from '../../shared/ui/authentication-layout'
-import styles from './styled'
+import AuthenticationLayout from '../../shared/ui/authentication-layout';
+import styles from './styled';
 
 function Login() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const goToSignUp = () => navigation.navigate('SignUp')
+  const goToSignUp = () => navigation.navigate('SignUp');
 
   return (
     <AuthenticationLayout
@@ -22,7 +22,7 @@ function Login() {
       footerButtonStyles={styles.footerButton}
       onFooterTextPress={goToSignUp}
     />
-  )
+  );
 }
 
-export default Login
+export default Login;

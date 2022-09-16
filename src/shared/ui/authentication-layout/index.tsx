@@ -1,23 +1,24 @@
-import React from 'react'
-import { Pressable, StyleProp, Text, TextStyle, View } from 'react-native'
+import React from 'react';
+import { Pressable, StyleProp, Text, TextStyle, View } from 'react-native';
 
-import { COLORS } from '../../../app/colors'
-import globalStyles from '../../../app/global-styles'
-import { BriefCaseIcon } from '../../icons'
-import CustomButton from '../button'
-import Input from '../input'
-import styles from './styled'
+import { COLORS } from 'src/app/colors';
+
+import globalStyles from '../../../app/global-styles';
+import { BriefCaseIcon } from '../../icons';
+import CustomButton from '../button';
+import Input from '../input';
+import styles from './styled';
 
 type StringValues = Record<
   'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle',
   string
->
-type StyleProps = Record<'buttonCustomStyles' | 'footerButtonStyles', StyleProp<TextStyle>>
+>;
+type StyleProps = Record<'buttonCustomStyles' | 'footerButtonStyles', StyleProp<TextStyle>>;
 
 type PropsType = StringValues &
   StyleProps & {
-    onFooterTextPress(): void
-  }
+    onFooterTextPress(): void;
+  };
 
 const AuthenticationLayout = ({
   title,
@@ -47,9 +48,7 @@ const AuthenticationLayout = ({
         text={`${submitButtonName} (skip)`}
         buttonCustomStyles={[styles.button, buttonCustomStyles]}
         textCustomStyles={[styles.buttonText, globalStyles.text]}
-        onClick={() => {
-          alert('Clicked!')
-        }}
+        // onClick={() => { alert('Clicked!') }}
       />
       <View>
         <Text style={[styles.footerText, globalStyles.primaryText]}>{footerTitle}</Text>
@@ -60,7 +59,7 @@ const AuthenticationLayout = ({
         </Pressable>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default AuthenticationLayout
+export default AuthenticationLayout;

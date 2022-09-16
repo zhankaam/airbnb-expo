@@ -1,21 +1,21 @@
-import React from 'react'
-import { ImageBackground, Pressable, SafeAreaView, Text, View } from 'react-native'
+import React from 'react';
+import { ImageBackground, Pressable, SafeAreaView, Text, View } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { COLORS } from 'src/app/colors'
-import { RootStackParams } from 'src/entities/navigation'
-import { BriefCaseIcon } from 'src/shared/icons'
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { COLORS } from 'src/app/colors';
+import { RootStackParams } from 'src/entities/navigation';
+import { BriefCaseIcon } from 'src/shared/icons';
 
-import globalStyles from '../../app/global-styles'
-import CustomButton from '../../shared/ui/button'
-import styles from './styled'
+import globalStyles from '../../app/global-styles';
+import CustomButton from '../../shared/ui/button';
+import styles from './styled';
 
 const Home = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>()
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const goToSignUp = () => navigation.navigate('SignUp')
-  const goToLogin = () => navigation.navigate('Login')
+  const goToSignUp = () => navigation.navigate('SignUp');
+  const goToLogin = () => navigation.navigate('Login');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -53,7 +53,7 @@ const Home = () => {
         </Pressable>
       </ImageBackground>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

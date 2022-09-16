@@ -5,4 +5,4 @@ export const COLORS = {
   BLACK: '#000000',
   GREY: '#C2C2C2',
   SECONDARY_GREY: '#D8D8D8',
-}
+};

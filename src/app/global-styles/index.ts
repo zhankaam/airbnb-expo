@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
-import { COLORS } from '../colors'
+import { COLORS } from '../colors';
 
 const globalStyles = StyleSheet.create({
   text: {
@@ -11,6 +11,6 @@ const globalStyles = StyleSheet.create({
     fontFamily: 'PingFangHK-Regular',
     fontWeight: '700',
   },
-})
+});
 
-export default globalStyles
+export default globalStyles;

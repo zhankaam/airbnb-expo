@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
-import { COLORS } from '../../app/colors'
+import { COLORS } from 'src/app/colors';
 
 const styles = StyleSheet.create({
   button: {
@@ -9,6 +9,6 @@ const styles = StyleSheet.create({
   footerButton: {
     color: COLORS.LIGHT_RED,
   },
-})
+});
 
-export default styles
+export default styles;
