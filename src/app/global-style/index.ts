@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { COLORS } from '../colors';
 
-const globalStyles = StyleSheet.create({
+const GlobalStyle = StyleSheet.create({
   text: {
     color: COLORS.WHITE,
     fontFamily: 'PingFangHK-Regular',
@@ -13,4 +13,4 @@ const globalStyles = StyleSheet.create({
   },
 });
 
-export default globalStyles;
+export default GlobalStyle;

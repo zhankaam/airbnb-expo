@@ -3,7 +3,7 @@ import { Pressable, StyleProp, Text, TextStyle, View } from 'react-native';
 
 import { COLORS } from 'src/app/colors';
 
-import globalStyles from '../../../app/global-styles';
+import GlobalStyle from '../../../app/global-style';
 import { FeatherIcon } from '../../icons';
 import CustomButton from '../button';
 import Input from '../input';
@@ -33,7 +33,7 @@ const AuthenticationLayout = ({
     <View style={styles.container}>
       <View style={styles.section}>
         <FeatherIcon style={styles.icon} name="briefcase" size={64} color={COLORS.LIGHT_RED} />
-        <Text style={[styles.title, globalStyles.primaryText]}>{title}</Text>
+        <Text style={[styles.title, GlobalStyle.primaryText]}>{title}</Text>
       </View>
       <View>
         <Input placeholder="Email" style={styles.input} onTextChange={text => console.log(text)} />
@@ -47,13 +47,13 @@ const AuthenticationLayout = ({
       <CustomButton
         text={`${submitButtonName} (skip)`}
         buttonCustomStyles={[styles.button, buttonCustomStyles]}
-        textCustomStyles={[styles.buttonText, globalStyles.text]}
+        textCustomStyles={[styles.buttonText, GlobalStyle.text]}
         // onClick={() => { alert('Clicked!') }}
       />
       <View>
-        <Text style={[styles.footerText, globalStyles.primaryText]}>{footerTitle}</Text>
+        <Text style={[styles.footerText, GlobalStyle.primaryText]}>{footerTitle}</Text>
         <Pressable style={styles.loginButton} onPress={onFooterTextPress}>
-          <Text style={[styles.loginButtonText, globalStyles.primaryText, footerButtonStyles]}>
+          <Text style={[styles.loginButtonText, GlobalStyle.primaryText, footerButtonStyles]}>
             {footerButtonName}
           </Text>
         </Pressable>

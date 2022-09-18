@@ -17,28 +17,28 @@ function MainTabNavigator() {
         name="Explore"
         component={Explore}
         options={{
-          tabBarIcon: () => <AntDesignIcon size={25} color={COLORS.BLACK} name="search1" />,
+          tabBarIcon: () => <AntDesignIcon size={25} color={COLORS.DARKER_GREY} name="search1" />,
         }}
       />
       <Tab.Screen
         name="Wishlists"
         component={Wishlists}
         options={{
-          tabBarIcon: () => <EvilIconsIcon size={35} color={COLORS.BLACK} name="heart" />,
+          tabBarIcon: () => <EvilIconsIcon size={35} color={COLORS.DARKER_GREY} name="heart" />,
         }}
       />
       <Tab.Screen
         name="Trips"
         component={Trips}
         options={{
-          tabBarIcon: () => <FontAwesome5Icon size={30} color={COLORS.BLACK} name="airbnb" />,
+          tabBarIcon: () => <FontAwesome5Icon size={30} color={COLORS.DARKER_GREY} name="airbnb" />,
         }}
       />
       <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
-          tabBarIcon: () => <FontAwesomeIcon size={25} color={COLORS.BLACK} name="user-o" />,
+          tabBarIcon: () => <FontAwesomeIcon size={25} color={COLORS.DARKER_GREY} name="user-o" />,
         }}
       />
     </Tab.Navigator>
