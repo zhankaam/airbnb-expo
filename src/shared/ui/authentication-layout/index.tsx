@@ -4,7 +4,7 @@ import { Pressable, StyleProp, Text, TextStyle, View } from 'react-native';
 import { COLORS } from 'src/app/colors';
 
 import globalStyles from '../../../app/global-styles';
-import { BriefCaseIcon } from '../../icons';
+import { FeatherIcon } from '../../icons';
 import CustomButton from '../button';
 import Input from '../input';
 import styles from './styled';
@@ -32,7 +32,7 @@ const AuthenticationLayout = ({
   return (
     <View style={styles.container}>
       <View style={styles.section}>
-        <BriefCaseIcon style={styles.icon} name="briefcase" size={64} color={COLORS.LIGHT_RED} />
+        <FeatherIcon style={styles.icon} name="briefcase" size={64} color={COLORS.LIGHT_RED} />
         <Text style={[styles.title, globalStyles.primaryText]}>{title}</Text>
       </View>
       <View>

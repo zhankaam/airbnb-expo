@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { COLORS } from 'src/app/colors';
 import { RootStackParams } from 'src/entities/navigation';
-import { BriefCaseIcon } from 'src/shared/icons';
+import { FeatherIcon } from 'src/shared/icons';
 
 import globalStyles from '../../app/global-styles';
 import CustomButton from '../../shared/ui/button';
@@ -16,6 +16,7 @@ const Home = () => {
 
   const goToSignUp = () => navigation.navigate('SignUp');
   const goToLogin = () => navigation.navigate('Login');
+  const goToMainPage = () => navigation.navigate('Main');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -24,7 +25,7 @@ const Home = () => {
         source={require('./../../app/images/container.jpg')}
         resizeMode="stretch">
         <View style={styles.top}>
-          <BriefCaseIcon name="briefcase" size={64} color={COLORS.WHITE} />
+          <FeatherIcon name="briefcase" size={64} color={COLORS.WHITE} />
           <Text style={[styles.name, globalStyles.text]}>Homebnb</Text>
         </View>
         <Text style={[styles.title, globalStyles.text]}>Find your home away {'\n'}from home.</Text>
@@ -45,10 +46,7 @@ const Home = () => {
             onClick={goToLogin}
           />
         </View>
-        <Pressable
-          style={styles.skipButton}
-          // onPress={() => console.log('pressed')}
-        >
+        <Pressable style={styles.skipButton} onPress={goToMainPage}>
           <Text style={[styles.skipButtonText, globalStyles.text]}>Skip</Text>
         </Pressable>
       </ImageBackground>
