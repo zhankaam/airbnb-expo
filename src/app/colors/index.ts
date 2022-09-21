@@ -6,4 +6,5 @@ export const COLORS = {
   GREY: '#C2C2C2',
   SECONDARY_GREY: '#D8D8D8',
   DARKER_GREY: '#6F6F6F',
+  SECONDARY_RED: '#D03660',
 };
