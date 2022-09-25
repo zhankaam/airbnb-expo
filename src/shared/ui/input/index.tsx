@@ -1,10 +1,11 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { KeyboardTypeOptions, TextInput } from 'react-native';
 
 import { COLORS } from 'src/app/colors';
 
 type PropsType = {
   style: Record<string, string | number>;
+  keyboardType: KeyboardTypeOptions;
   placeholder: string;
   secureTextEntry: boolean;
   placeholderTextColor: string;

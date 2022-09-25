@@ -5,12 +5,14 @@ export interface AuthState {
   isLoggedIn: boolean;
   error: string;
   isLoading: boolean;
+  token: string | null;
 }
 
 const initialState: AuthState = {
   isLoggedIn: false,
   error: '',
   isLoading: false,
+  token: null,
 };
 
 export const authSlice = createSlice({

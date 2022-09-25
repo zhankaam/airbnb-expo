@@ -18,6 +18,12 @@ type StyleProps = Record<'buttonCustomStyles' | 'footerButtonStyles', StyleProp<
 type PropsType = StringValues &
   StyleProps & {
     onFooterTextPress(): void;
+    onEmailChangeHandler(text: string): void;
+    onPasswordChangeHandler(text: string): void;
+    onNameChangeHandler(text: string): void;
+    onConfirmationPasswordChangeHandler(text: string): void;
+    onPhoneNumberChangeHandler(text: string): void;
+    onSubmit(): void;
   };
 
 const AuthenticationLayout = ({
@@ -28,27 +34,59 @@ const AuthenticationLayout = ({
   buttonCustomStyles,
   footerButtonStyles,
   onFooterTextPress,
+  onEmailChangeHandler,
+  onPasswordChangeHandler,
+  onConfirmationPasswordChangeHandler,
+  onPhoneNumberChangeHandler,
+  onNameChangeHandler,
+  onSubmit,
 }: Partial<PropsType>) => {
   return (
     <View style={styles.container}>
       <View style={styles.section}>
-        <FeatherIcon style={styles.icon} name="briefcase" size={64} color={COLORS.LIGHT_RED} />
+        {title !== 'Sign Up' && (
+          <FeatherIcon style={styles.icon} name="briefcase" size={64} color={COLORS.LIGHT_RED} />
+        )}
         <Text style={[styles.title, GlobalStyle.primaryText]}>{title}</Text>
       </View>
       <View>
-        <Input placeholder="Email" style={styles.input} onTextChange={text => console.log(text)} />
+        {title === 'Sign Up' && (
+          <Input placeholder="Name" style={styles.input} onTextChange={onNameChangeHandler} />
+        )}
+        <Input
+          keyboardType="email-address"
+          placeholder="Email"
+          style={styles.input}
+          onTextChange={onEmailChangeHandler}
+        />
         <Input
           placeholder="Password"
           style={styles.input}
           secureTextEntry
-          onTextChange={text => console.log(text)}
+          onTextChange={onPasswordChangeHandler}
         />
+        {title === 'Sign Up' && (
+          <>
+            <Input
+              placeholder="Confirm Password"
+              style={styles.input}
+              secureTextEntry
+              onTextChange={onConfirmationPasswordChangeHandler}
+            />
+            <Input
+              keyboardType="numeric"
+              placeholder="Phone Number"
+              style={styles.input}
+              onTextChange={onPhoneNumberChangeHandler}
+            />
+          </>
+        )}
       </View>
       <CustomButton
         text={`${submitButtonName} (skip)`}
         buttonCustomStyles={[styles.button, buttonCustomStyles]}
         textCustomStyles={[styles.buttonText, GlobalStyle.text]}
-        // onClick={() => { alert('Clicked!') }}
+        onClick={onSubmit}
       />
       <View>
         <Text style={[styles.footerText, GlobalStyle.primaryText]}>{footerTitle}</Text>
