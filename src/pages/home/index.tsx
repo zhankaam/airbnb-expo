@@ -16,7 +16,7 @@ const Home = () => {
 
   const goToSignUp = () => navigation.navigate('SignUp');
   const goToLogin = () => navigation.navigate('Login');
-  const goToMainPage = () => navigation.navigate('Main');
+  // const goToMainPage = () => navigation.navigate('Main');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -46,7 +46,8 @@ const Home = () => {
             onClick={goToLogin}
           />
         </View>
-        <Pressable style={styles.skipButton} onPress={goToMainPage}>
+        <Pressable style={styles.skipButton}>
+          {/* onPress={goToMainPage} */}
           <Text style={[styles.skipButtonText, GlobalStyle.text]}>Skip</Text>
         </Pressable>
       </ImageBackground>
