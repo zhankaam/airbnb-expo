@@ -23,13 +23,11 @@ export const signUp = createAsyncThunk('auth/signUp', async (formData: FormDataT
   try {
     const data = await authAPI.signUp(formData);
     thunkAPI.dispatch(setIsLoggedIn(true));
-    console.log(data);
     return data;
   } catch (e) {
     const err = e as Error | AxiosError<{ message: string }>;
     if (axios.isAxiosError(err)) {
       const error = err.response?.data ? err.response.data.message : err.message;
-      console.log({ err });
       thunkAPI.dispatch(setAuthError(error));
     }
   } finally {
@@ -49,7 +47,6 @@ export const login = createAsyncThunk(
       const err = e as Error | AxiosError<{ message: string }>;
       if (axios.isAxiosError(err)) {
         const error = err.response?.data ? err.response.data.message : err.message;
-        console.log({ err });
         thunkAPI.dispatch(setAuthError(error));
       }
     } finally {
