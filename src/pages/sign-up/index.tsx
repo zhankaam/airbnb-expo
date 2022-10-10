@@ -7,7 +7,7 @@ import { signUp } from 'src/entities/auth/model';
 import { RootStackParams } from 'src/entities/navigation';
 
 import AuthenticationLayout from '../../shared/ui/authentication-layout';
-import styles from './styled';
+import styles from './styles';
 
 const SignUp = () => {
   const formDataInitialState = {

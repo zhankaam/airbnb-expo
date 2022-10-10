@@ -7,7 +7,7 @@ import GlobalStyle from '../../../app/global-style';
 import { FeatherIcon } from '../../icons';
 import CustomButton from '../button';
 import Input from '../input';
-import styles from './styled';
+import styles from './styles';
 
 type StringValues = Record<
   'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle',

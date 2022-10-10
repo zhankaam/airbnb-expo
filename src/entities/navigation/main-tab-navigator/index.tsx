@@ -9,7 +9,7 @@ import Trips from 'src/pages/trips';
 import Wishlists from 'src/pages/wishlists';
 import { AntDesignIcon, EvilIconsIcon, FontAwesome5Icon, FontAwesomeIcon } from 'src/shared/icons';
 
-import { styles } from './styled';
+import { styles } from './styles';
 
 const Tab = createBottomTabNavigator();
 

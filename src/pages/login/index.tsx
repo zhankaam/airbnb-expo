@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { ActivityIndicator } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useAppDispatch, useTypedSelector } from 'src/app/store';
 import { login } from 'src/entities/auth/model';
 import { RootStackParams } from 'src/entities/navigation';
+import AirbnbLoader from 'src/shared/ui/airbnb-loader';
 
 import AuthenticationLayout from '../../shared/ui/authentication-layout';
-import styles from './styled';
+import styles from './styles';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -30,22 +30,25 @@ function Login() {
   };
 
   const onSubmit = () => dispatch(login(formData));
-  // console.log({ isLoading });
+
   return (
     <>
-      <AuthenticationLayout
-        title="Log in"
-        submitButtonName="Log in"
-        footerButtonName="Sign up"
-        footerTitle="Do you need an account?"
-        buttonCustomStyles={styles.button}
-        footerButtonStyles={styles.footerButton}
-        onFooterTextPress={goToSignUp}
-        onEmailChangeHandler={onEmailChangeHandler}
-        onPasswordChangeHandler={onPasswordChangeHandler}
-        onSubmit={onSubmit}
-      />
-      <ActivityIndicator size="large" color="#00ff00" />
+      {isLoading ? (
+        <AirbnbLoader />
+      ) : (
+        <AuthenticationLayout
+          title="Log in"
+          submitButtonName="Log in"
+          footerButtonName="Sign up"
+          footerTitle="Do you need an account?"
+          buttonCustomStyles={styles.button}
+          footerButtonStyles={styles.footerButton}
+          onFooterTextPress={goToSignUp}
+          onEmailChangeHandler={onEmailChangeHandler}
+          onPasswordChangeHandler={onPasswordChangeHandler}
+          onSubmit={onSubmit}
+        />
+      )}
     </>
   );
 }

@@ -9,7 +9,7 @@ import { FeatherIcon } from 'src/shared/icons';
 
 import GlobalStyle from '../../app/global-style';
 import CustomButton from '../../shared/ui/button';
-import styles from './styled';
+import styles from './styles';
 
 const Home = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
