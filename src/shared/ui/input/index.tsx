@@ -1,6 +1,7 @@
 import React from 'react';
-import { KeyboardTypeOptions, TextInput, TextInputAndroidProps } from 'react-native';
+import { KeyboardTypeOptions, Text, TextInput, TextInputAndroidProps } from 'react-native';
 
+import { Controller } from 'react-hook-form';
 import { COLORS } from 'src/app/colors';
 
 import styles from './styles';
@@ -12,33 +13,36 @@ type PropsType = {
   secureTextEntry: boolean;
   placeholderTextColor: string;
   maxLength: number;
+  name: string;
   error: string;
-  value: string;
-  onChangeText(text: string): void;
+  control: any; // @TODO
+  rules: any;
 };
 
 const Input = ({
   error,
-  value,
-  onChangeText,
+  name,
   placeholderTextColor = COLORS.BLACK,
   ...props
 }: Partial<PropsType>) => {
-  // const [text, setText] = React.useState('');
   const inputStyle = error ? styles.error : styles.main;
 
-  // const onChangeText = (text: string) => {
-  //   setText(text);
-  //   onTextChange && onTextChange(text);
-  // };
-
   return (
-    <TextInput
-      {...props}
-      style={[styles.base, inputStyle]}
-      onChangeText={onChangeText}
-      value={value}
-    />
+    <>
+      <Controller
+        {...props}
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            {...props}
+            style={[styles.base, inputStyle]}
+            onChangeText={onChange}
+            value={value}
+          />
+        )}
+        name={name ?? ''}
+      />
+      {error && <Text style={styles.errorText}>{error}</Text>}
+    </>
   );
 };
 

@@ -20,8 +20,10 @@ const AuthenticationLayout = ({
   footerButtonStyles,
   onFooterTextPress,
   onSubmit,
-  ...props
-}: Partial<PropsType>) => {
+  control,
+  errors,
+  watch,
+}: PropsType) => {
   const isLoading = useTypedSelector(state => state.auth.isLoading);
   const error = useTypedSelector(state => state.auth.error);
 
@@ -32,7 +34,7 @@ const AuthenticationLayout = ({
       ) : (
         <View style={styles.container}>
           <Header title={title} />
-          <Forms title={title} {...props} />
+          <Forms title={title} watch={watch} control={control} errors={errors} />
           {error && <Text style={styles.error}>{error}</Text>}
           <Button
             text={`${submitButtonName} (skip)`}

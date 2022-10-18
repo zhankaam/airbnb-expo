@@ -1,122 +1,86 @@
 import React from 'react';
-import { TextInput, View } from 'react-native';
+import { View } from 'react-native';
 
-import { Controller } from 'react-hook-form';
+import { FieldError } from 'react-hook-form';
 import Input from 'src/shared/ui/input';
 
 export type PropsType = {
   control: any; // @TODO
   title: string;
-  onEmailChangeHandler?: (text: string) => void;
-  onPasswordChangeHandler?: (text: string) => void;
-  onNameChangeHandler?: (text: string) => void;
-  onConfirmationPasswordChangeHandler?: (text: string) => void;
-  onPhoneNumberChangeHandler?: (text: string) => void;
+  errors: Record<string, FieldError>;
+  watch: any;
 };
 
-const Forms = ({
-  control,
-  title,
-  onNameChangeHandler,
-  onEmailChangeHandler,
-  onPasswordChangeHandler,
-  onConfirmationPasswordChangeHandler,
-  onPhoneNumberChangeHandler,
-}: PropsType) => {
+const Forms = ({ control, title, errors, watch }: PropsType) => {
   return (
     <View>
       {title === 'Sign Up' && (
-        <Controller
+        <Input
+          autoComplete="name"
+          error={errors.name?.message}
+          placeholder="Name"
           control={control}
           rules={{
-            required: true,
+            required: 'name is required',
           }}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              autoComplete="name"
-              value={value}
-              // error={error}
-              onChangeText={onChange}
-              placeholder="Name"
-              // onTextChange={onNameChangeHandler}
-            />
-          )}
           name="name"
         />
       )}
-      <Controller
+      <Input
+        autoComplete="email"
         control={control}
         rules={{
-          required: true,
+          required: 'email is required',
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-            message: 'invalid email address',
+            message: 'Email address is invalid',
           },
         }}
-        render={({ field: { onChange, value } }) => (
-          <Input
-            autoComplete="email"
-            value={value}
-            // error={error}
-            keyboardType="email-address"
-            placeholder="Email"
-            onChangeText={onChange}
-          />
-        )}
+        error={errors.email?.message}
+        keyboardType="email-address"
+        placeholder="Email"
         name="email"
       />
-      <Controller
+
+      <Input
+        autoComplete="password"
         control={control}
         rules={{
-          required: true,
+          required: 'password is required',
         }}
-        render={({ field: { onChange, value } }) => (
-          <Input
-            autoComplete="password"
-            value={value}
-            // error={error}
-            placeholder="Password"
-            secureTextEntry
-            onChangeText={onChange}
-          />
-        )}
+        error={errors.password?.message}
+        placeholder="Password"
         name="password"
+        secureTextEntry
       />
 
       {title === 'Sign Up' && (
         <>
-          <Controller
+          <Input
+            placeholder="Confirm Password"
             control={control}
             rules={{
-              required: true,
+              required: 'password confirmation is required',
+              validate: (val: string) => {
+                if (watch('password') != val) {
+                  return 'Your passwords do no match';
+                }
+              },
             }}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                placeholder="Confirm Password"
-                value={value}
-                // error={error}
-                onChangeText={onChange}
-                secureTextEntry
-              />
-            )}
+            error={errors.password_confirmation?.message}
+            secureTextEntry
             name="password_confirmation"
           />
-          <Controller
+          <Input
+            autoComplete="tel"
+            error={errors.phone?.message}
+            maxLength={10}
+            keyboardType="numeric"
+            placeholder="Phone Number"
             control={control}
             rules={{
-              required: true,
+              required: 'phone is required',
             }}
-            render={({ field: { onChange, value } }) => (
-              <Input
-                autoComplete="tel"
-                // error={error}
-                value={value}
-                maxLength={10}
-                keyboardType="numeric"
-                placeholder="Phone Number"
-                onChangeText={onChange}
-              />
-            )}
             name="phone"
           />
         </>

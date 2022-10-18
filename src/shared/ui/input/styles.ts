@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
   error: {
     borderColor: COLORS.LIGHT_RED,
   },
+  errorText: {
+    color: COLORS.LIGHT_RED,
+    textAlign: 'center',
+  },
 });
 
 export default styles;

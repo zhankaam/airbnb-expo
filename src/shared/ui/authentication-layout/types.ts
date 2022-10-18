@@ -1,5 +1,7 @@
 import { StyleProp, TextStyle } from 'react-native';
 
+import { FieldError } from 'react-hook-form';
+
 type StringValues = Record<
   'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle',
   string
@@ -9,11 +11,8 @@ type StyleProps = Record<'buttonCustomStyles' | 'footerButtonStyles', StyleProp<
 export type PropsType = StringValues &
   StyleProps & {
     onFooterTextPress(): void;
-    onEmailChangeHandler(text: string): void;
-    onPasswordChangeHandler(text: string): void;
-    onNameChangeHandler(text: string): void;
-    onConfirmationPasswordChangeHandler(text: string): void;
-    onPhoneNumberChangeHandler(text: string): void;
     onSubmit(): void;
     control: any; // @TODO
+    errors: Record<string, FieldError>;
+    watch: any;
   };
