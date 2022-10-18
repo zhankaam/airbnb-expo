@@ -10,12 +10,7 @@ type PropsType = {
   onClick(): void;
 };
 
-const Button = ({
-  text = 'Button',
-  buttonCustomStyles,
-  textCustomStyles,
-  onClick,
-}: Partial<PropsType>) => {
+const Button = ({ text, buttonCustomStyles, textCustomStyles, onClick }: Partial<PropsType>) => {
   return (
     <TouchableOpacity style={[styles.button, buttonCustomStyles]} onPress={onClick}>
       <Text style={[styles.text, textCustomStyles]}>{text}</Text>

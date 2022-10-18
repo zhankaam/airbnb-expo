@@ -1,49 +1,29 @@
 import React from 'react';
-import { Pressable, StyleProp, Text, TextStyle, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 
-import { COLORS } from 'src/app/colors';
+import globalStyle from 'src/app/global-style';
 import { useTypedSelector } from 'src/app/store';
 import AirbnbLoader from 'src/shared/ui/airbnb-loader';
+import Forms from 'src/shared/ui/authentication-layout/form';
+import { PropsType } from 'src/shared/ui/authentication-layout/types';
 
-import GlobalStyle from '../../../app/global-style';
-import { FeatherIcon } from '../../icons';
-import CustomButton from '../button';
-import Input from '../input';
+import Button from '../button';
+import Header from './header';
 import styles from './styles';
 
-type StringValues = Record<
-  'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle',
-  string
->;
-type StyleProps = Record<'buttonCustomStyles' | 'footerButtonStyles', StyleProp<TextStyle>>;
-
-type PropsType = StringValues &
-  StyleProps & {
-    onFooterTextPress(): void;
-    onEmailChangeHandler(text: string): void;
-    onPasswordChangeHandler(text: string): void;
-    onNameChangeHandler(text: string): void;
-    onConfirmationPasswordChangeHandler(text: string): void;
-    onPhoneNumberChangeHandler(text: string): void;
-    onSubmit(): void;
-  };
-
 const AuthenticationLayout = ({
-  title,
+  title = '',
   submitButtonName,
   footerButtonName,
   footerTitle,
   buttonCustomStyles,
   footerButtonStyles,
   onFooterTextPress,
-  onEmailChangeHandler,
-  onPasswordChangeHandler,
-  onConfirmationPasswordChangeHandler,
-  onPhoneNumberChangeHandler,
-  onNameChangeHandler,
   onSubmit,
+  ...props
 }: Partial<PropsType>) => {
   const isLoading = useTypedSelector(state => state.auth.isLoading);
+  const error = useTypedSelector(state => state.auth.error);
 
   return (
     <>
@@ -51,60 +31,19 @@ const AuthenticationLayout = ({
         <AirbnbLoader />
       ) : (
         <View style={styles.container}>
-          <View style={styles.section}>
-            {title !== 'Sign Up' && (
-              <FeatherIcon
-                style={styles.icon}
-                name="briefcase"
-                size={64}
-                color={COLORS.LIGHT_RED}
-              />
-            )}
-            <Text style={[styles.title, GlobalStyle.primaryText]}>{title}</Text>
-          </View>
-          <View>
-            {title === 'Sign Up' && (
-              <Input placeholder="Name" style={styles.input} onTextChange={onNameChangeHandler} />
-            )}
-            <Input
-              keyboardType="email-address"
-              placeholder="Email"
-              style={styles.input}
-              onTextChange={onEmailChangeHandler}
-            />
-            <Input
-              placeholder="Password"
-              style={styles.input}
-              secureTextEntry
-              onTextChange={onPasswordChangeHandler}
-            />
-            {title === 'Sign Up' && (
-              <>
-                <Input
-                  placeholder="Confirm Password"
-                  style={styles.input}
-                  secureTextEntry
-                  onTextChange={onConfirmationPasswordChangeHandler}
-                />
-                <Input
-                  keyboardType="numeric"
-                  placeholder="Phone Number"
-                  style={styles.input}
-                  onTextChange={onPhoneNumberChangeHandler}
-                />
-              </>
-            )}
-          </View>
-          <CustomButton
+          <Header title={title} />
+          <Forms title={title} {...props} />
+          {error && <Text style={styles.error}>{error}</Text>}
+          <Button
             text={`${submitButtonName} (skip)`}
             buttonCustomStyles={[styles.button, buttonCustomStyles]}
-            textCustomStyles={[styles.buttonText, GlobalStyle.text]}
+            textCustomStyles={[styles.buttonText, globalStyle.text]}
             onClick={onSubmit}
           />
           <View>
-            <Text style={[styles.footerText, GlobalStyle.primaryText]}>{footerTitle}</Text>
+            <Text style={[styles.footerText, globalStyle.primaryText]}>{footerTitle}</Text>
             <Pressable style={styles.loginButton} onPress={onFooterTextPress}>
-              <Text style={[styles.loginButtonText, GlobalStyle.primaryText, footerButtonStyles]}>
+              <Text style={[styles.loginButtonText, globalStyle.primaryText, footerButtonStyles]}>
                 {footerButtonName}
               </Text>
             </Pressable>

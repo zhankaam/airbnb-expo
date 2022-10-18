@@ -21,15 +21,6 @@ const styles = StyleSheet.create({
     color: COLORS.BLACK,
     fontSize: 25,
   },
-  input: {
-    width: 300,
-    margin: 10,
-    padding: 20,
-    borderRadius: 50,
-    borderWidth: 1,
-    borderColor: COLORS.SECONDARY_GREY,
-    fontSize: 16,
-  },
   button: {
     width: 300,
     height: 60,
@@ -49,6 +40,10 @@ const styles = StyleSheet.create({
   },
   loginButtonText: {
     fontSize: 20,
+  },
+  error: {
+    color: COLORS.LIGHT_RED,
+    fontSize: 18,
   },
 });
 

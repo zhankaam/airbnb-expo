@@ -7,7 +7,7 @@ import { COLORS } from 'src/app/colors';
 import { RootStackParams } from 'src/entities/navigation';
 import { FeatherIcon } from 'src/shared/icons';
 
-import GlobalStyle from '../../app/global-style';
+import globalStyle from '../../app/global-style';
 import CustomButton from '../../shared/ui/button';
 import styles from './styles';
 
@@ -26,10 +26,10 @@ const Home = () => {
         resizeMode="stretch">
         <View style={styles.top}>
           <FeatherIcon name="briefcase" size={64} color={COLORS.WHITE} />
-          <Text style={[styles.name, GlobalStyle.text]}>Homebnb</Text>
+          <Text style={[styles.name, globalStyle.text]}>Homebnb</Text>
         </View>
-        <Text style={[styles.title, GlobalStyle.text]}>Find your home away {'\n'}from home.</Text>
-        <Text style={[styles.text, GlobalStyle.text]}>
+        <Text style={[styles.title, globalStyle.text]}>Find your home away {'\n'}from home.</Text>
+        <Text style={[styles.text, globalStyle.text]}>
           Exploring the globe was {'\n'}never that easy
         </Text>
         <View style={styles.buttonsContainer}>
@@ -42,13 +42,13 @@ const Home = () => {
           <CustomButton
             text="Log in"
             buttonCustomStyles={[styles.button, styles.loginButton]}
-            textCustomStyles={[styles.loginButtonText, GlobalStyle.text]}
+            textCustomStyles={[styles.loginButtonText, globalStyle.text]}
             onClick={goToLogin}
           />
         </View>
         <Pressable style={styles.skipButton}>
           {/* onPress={goToMainPage} */}
-          <Text style={[styles.skipButtonText, GlobalStyle.text]}>Skip</Text>
+          <Text style={[styles.skipButtonText, globalStyle.text]}>Skip</Text>
         </Pressable>
       </ImageBackground>
     </SafeAreaView>

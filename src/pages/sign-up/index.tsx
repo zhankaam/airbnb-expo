@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useForm } from 'react-hook-form';
 import { useAppDispatch } from 'src/app/store';
-import { signUp } from 'src/entities/auth/model';
+// import { setAuthError, signUp } from 'src/entities/auth/model';
 import { RootStackParams } from 'src/entities/navigation';
+import { FormDataType } from 'src/shared/api/auth';
 
 import AuthenticationLayout from '../../shared/ui/authentication-layout';
 import styles from './styles';
@@ -20,6 +22,22 @@ const SignUp = () => {
   const [formData, setFormData] = useState(formDataInitialState);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const dispatch = useAppDispatch();
+  const {
+    control,
+    handleSubmit,
+    formState, // : { errors }
+  } = useForm<FormDataType>({
+    defaultValues: {
+      email: '',
+      name: '',
+      phone: '',
+      password: '',
+      password_confirmation: '',
+    },
+  });
+
+  console.log({ control, handleSubmit, formState });
+  const onSubmit = (data: any) => console.log(data);
 
   const goToLogin = () => navigation.navigate('Login');
 
@@ -43,10 +61,24 @@ const SignUp = () => {
     setFormData({ ...formData, name: text });
   };
 
-  const onSubmit = () => {
-    dispatch(signUp(formData));
-    setFormData(formDataInitialState);
-  };
+  // const onSubmit = () => {
+  //   const { email, name, phone, password, password_confirmation } = formData;
+  //
+  //   if (!email) {
+  //     dispatch(setAuthError('email is required'));
+  //   } else if (!name) {
+  //     dispatch(setAuthError('name is required'));
+  //   } else if (!phone) {
+  //     dispatch(setAuthError('phone is required'));
+  //   } else if (!password) {
+  //     dispatch(setAuthError('password is required'));
+  //   } else if (!password_confirmation) {
+  //     dispatch(setAuthError('password_confirmation is required'));
+  //   } else {
+  //     dispatch(signUp(formData));
+  //     setFormData(formDataInitialState);
+  //   }
+  // };
 
   return (
     <AuthenticationLayout
@@ -62,7 +94,8 @@ const SignUp = () => {
       onConfirmationPasswordChangeHandler={onConfirmationPasswordChangeHandler}
       onPhoneNumberChangeHandler={onPhoneNumberChangeHandler}
       onNameChangeHandler={onNameChangeHandler}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit(onSubmit)}
+      control={control}
     />
   );
 };
