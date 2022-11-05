@@ -1,6 +1,7 @@
 import { StyleProp, TextStyle } from 'react-native';
 
-import { FieldError } from 'react-hook-form';
+import { Control, FieldError } from 'react-hook-form';
+import { FormDataType } from 'src/shared/api/auth';
 
 type StringValues = Record<
   'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle',
@@ -12,7 +13,7 @@ export type PropsType = StringValues &
   StyleProps & {
     onFooterTextPress(): void;
     onSubmit(): void;
-    control: any; // @TODO
+    control: Control<FormDataType> | Control<Pick<FormDataType, 'email' | 'password'>>;
     errors: Record<string, FieldError>;
-    watch: any;
+    watch: (value: string) => string;
   };

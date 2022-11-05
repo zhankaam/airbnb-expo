@@ -1,14 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { FieldError } from 'react-hook-form';
+import { Control, FieldError } from 'react-hook-form';
+import { FormDataType } from 'src/shared/api/auth';
 import Input from 'src/shared/ui/input';
 
 export type PropsType = {
-  control: any; // @TODO
+  control: Control<FormDataType> | Control<Pick<FormDataType, 'email' | 'password'>>;
   title: string;
   errors: Record<string, FieldError>;
-  watch: any;
+  watch: (value: string) => string;
 };
 
 const Forms = ({ control, title, errors, watch }: PropsType) => {

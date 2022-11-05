@@ -1,7 +1,7 @@
 import React from 'react';
 import { KeyboardTypeOptions, Text, TextInput, TextInputAndroidProps } from 'react-native';
 
-import { Controller } from 'react-hook-form';
+import { Control, Controller, RegisterOptions } from 'react-hook-form';
 import { COLORS } from 'src/app/colors';
 
 import styles from './styles';
@@ -15,8 +15,8 @@ type PropsType = {
   maxLength: number;
   name: string;
   error: string;
-  control: any; // @TODO
-  rules: any;
+  control: Control<any>; // @TODO
+  rules: RegisterOptions;
 };
 
 const Input = ({
@@ -26,7 +26,7 @@ const Input = ({
   ...props
 }: Partial<PropsType>) => {
   const inputStyle = error ? styles.error : styles.main;
-
+  console.log(props.control, props.rules);
   return (
     <>
       <Controller
