@@ -29,8 +29,6 @@ const SignUp = () => {
     },
   });
 
-  console.log({ errors });
-
   const onSubmit = (data: FormDataType) => dispatch(signUp(data));
 
   const goToLogin = () => navigation.navigate('Login');
