@@ -1,8 +1,16 @@
 import React from 'react';
-import { KeyboardTypeOptions, Text, TextInput, TextInputAndroidProps } from 'react-native';
+import {
+  KeyboardTypeOptions,
+  Pressable,
+  Text,
+  TextInput,
+  TextInputAndroidProps,
+  View,
+} from 'react-native';
 
 import { Control, Controller, RegisterOptions } from 'react-hook-form';
 import { COLORS } from 'src/app/colors';
+import { FontAwesomeIcon } from 'src/shared/icons';
 
 import styles from './styles';
 
@@ -17,32 +25,43 @@ type PropsType = {
   error: string;
   control: Control<any>; // @TODO
   rules: RegisterOptions;
+  rightIcon: string;
+  handlePasswordVisibility: () => void;
 };
 
 const Input = ({
   error,
-  name,
+  name = '',
+  rightIcon = '',
+  handlePasswordVisibility,
   placeholderTextColor = COLORS.BLACK,
   ...props
 }: Partial<PropsType>) => {
   const inputStyle = error ? styles.error : styles.main;
-  console.log(props.control, props.rules);
+
   return (
-    <>
+    <View style={styles.container}>
       <Controller
         {...props}
         render={({ field: { onChange, value } }) => (
-          <TextInput
-            {...props}
-            style={[styles.base, inputStyle]}
-            onChangeText={onChange}
-            value={value}
-          />
+          <View style={styles.inputContainer}>
+            <TextInput
+              {...props}
+              style={[styles.base, inputStyle]}
+              onChangeText={onChange}
+              value={value}
+            />
+            {rightIcon && (
+              <Pressable onPress={handlePasswordVisibility}>
+                <FontAwesomeIcon name={rightIcon} size={22} color={COLORS.BLACK} />
+              </Pressable>
+            )}
+          </View>
         )}
-        name={name ?? ''}
+        name={name}
       />
       {error && <Text style={styles.errorText}>{error}</Text>}
-    </>
+    </View>
   );
 };
 

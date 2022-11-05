@@ -3,6 +3,7 @@ import { View } from 'react-native';
 
 import { Control, FieldError } from 'react-hook-form';
 import { FormDataType } from 'src/shared/api/auth';
+import { useTogglePasswordVisibility } from 'src/shared/hooks/use-toggle-password-visibility';
 import Input from 'src/shared/ui/input';
 
 export type PropsType = {
@@ -13,6 +14,14 @@ export type PropsType = {
 };
 
 const Forms = ({ control, title, errors, watch }: PropsType) => {
+  const { isPasswordVisibility, rightIcon, handlePasswordVisibility } =
+    useTogglePasswordVisibility();
+  const {
+    isPasswordVisibility: isPasswordConfirmationVisibility,
+    rightIcon: passwordConfirmationIcon,
+    handlePasswordVisibility: handleConfirmationPasswordVisibility,
+  } = useTogglePasswordVisibility();
+
   return (
     <View>
       {title === 'Sign Up' && (
@@ -52,7 +61,9 @@ const Forms = ({ control, title, errors, watch }: PropsType) => {
         error={errors.password?.message}
         placeholder="Password"
         name="password"
-        secureTextEntry
+        secureTextEntry={isPasswordVisibility}
+        rightIcon={rightIcon}
+        handlePasswordVisibility={handlePasswordVisibility}
       />
 
       {title === 'Sign Up' && (
@@ -69,7 +80,9 @@ const Forms = ({ control, title, errors, watch }: PropsType) => {
               },
             }}
             error={errors.password_confirmation?.message}
-            secureTextEntry
+            secureTextEntry={isPasswordConfirmationVisibility}
+            rightIcon={passwordConfirmationIcon}
+            handlePasswordVisibility={handleConfirmationPasswordVisibility}
             name="password_confirmation"
           />
           <Input
@@ -81,6 +94,10 @@ const Forms = ({ control, title, errors, watch }: PropsType) => {
             control={control}
             rules={{
               required: 'phone is required',
+              minLength: {
+                value: 10,
+                message: 'The length of your phone number must 10 characters',
+              },
             }}
             name="phone"
           />
