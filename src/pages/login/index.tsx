@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useAppDispatch } from 'src/app/store';
 import { login } from 'src/entities/auth/model';
 import { RootStackParams } from 'src/entities/navigation';
-import { FormDataType } from 'src/shared/api/auth';
+import { FormDataType } from 'src/services/http/auth';
 
 import AuthenticationLayout from '../../shared/ui/authentication-layout';
 import styles from './styles';

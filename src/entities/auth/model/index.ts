@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import axios, { AxiosError } from 'axios';
-import { authAPI, FormDataType, LoginResponseType } from 'src/shared/api/auth';
+import { authAPI, FormDataType, LoginResponseType } from 'src/services/http/auth';
 
 export interface AuthState {
   isLoggedIn: boolean;
@@ -75,6 +75,10 @@ export const authSlice = createSlice({
     });
     builder.addCase(signUp.fulfilled, (state, action) => {
       state.token = action.payload.token;
+    });
+    builder.addCase(signUp.rejected, (state, action) => {
+      console.log({ action, state });
+      // state.error = action.payload.error;
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.user = action.payload.result;

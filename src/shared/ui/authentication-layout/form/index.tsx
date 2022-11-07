@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { Control, FieldError } from 'react-hook-form';
-import { FormDataType } from 'src/shared/api/auth';
+import { FormDataType } from 'src/services/http/auth';
 import { useTogglePasswordVisibility } from 'src/shared/hooks/use-toggle-password-visibility';
 import Input from 'src/shared/ui/input';
 

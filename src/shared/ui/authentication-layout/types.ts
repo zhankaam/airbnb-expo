@@ -1,7 +1,7 @@
 import { StyleProp, TextStyle } from 'react-native';
 
 import { Control, FieldError } from 'react-hook-form';
-import { FormDataType } from 'src/shared/api/auth';
+import { FormDataType } from 'src/services/http/auth';
 
 type StringValues = Record<
   'title' | 'submitButtonName' | 'footerButtonName' | 'footerTitle',
