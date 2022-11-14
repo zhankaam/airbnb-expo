@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-export const instance = axios.create({
-  baseURL: 'https://apingweb.com/api/',
+const baseURL = 'https://apingweb.com/api/';
+
+const instance = axios.create({
+  baseURL,
 });
 
 export const authAPI = {

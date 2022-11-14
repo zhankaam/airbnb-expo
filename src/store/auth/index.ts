@@ -12,7 +12,7 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  isLoggedIn: false,
+  isLoggedIn: true,
   error: '',
   isLoading: false,
   token: null,

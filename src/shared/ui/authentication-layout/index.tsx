@@ -2,10 +2,10 @@ import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import globalStyle from 'src/app/global-style';
-import { useTypedSelector } from 'src/app/store';
 import AirbnbLoader from 'src/shared/ui/airbnb-loader';
 import Forms from 'src/shared/ui/authentication-layout/form';
 import { PropsType } from 'src/shared/ui/authentication-layout/types';
+import { useTypedSelector } from 'src/store';
 
 import Button from '../button';
 import Header from './header';

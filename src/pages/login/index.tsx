@@ -3,10 +3,10 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch } from 'src/app/store';
-import { login } from 'src/entities/auth/model';
 import { RootStackParams } from 'src/entities/navigation';
 import { FormDataType } from 'src/services/http/auth';
+import { useAppDispatch } from 'src/store';
+import { login } from 'src/store/auth';
 
 import AuthenticationLayout from '../../shared/ui/authentication-layout';
 import styles from './styles';
