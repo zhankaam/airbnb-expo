@@ -2,8 +2,8 @@ import React from 'react';
 
 import { NavigationContainer, NavigatorScreenParams } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useTypedSelector } from 'src/store';
 import MainTabNavigator from 'src/entities/navigation/main-tab-navigator';
+import { useAuthentication } from 'src/shared/hooks/use-authentication';
 
 import Home from '../../pages/home';
 import Login from '../../pages/login';
@@ -26,12 +26,12 @@ export type MainStackParams = {
 const RootStack = createNativeStackNavigator<RootStackParams>();
 
 export default function Navigate() {
-  const isLoggedIn = useTypedSelector(state => state.auth.isLoggedIn);
+  const { user } = useAuthentication();
 
   return (
     <NavigationContainer>
       <RootStack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
-        {isLoggedIn ? (
+        {user ? (
           <RootStack.Screen name="Main" component={MainTabNavigator} />
         ) : (
           <RootStack.Group>

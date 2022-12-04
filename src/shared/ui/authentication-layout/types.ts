@@ -13,7 +13,7 @@ export type PropsType = StringValues &
   StyleProps & {
     onFooterTextPress(): void;
     onSubmit(): void;
-    control: Control<FormDataType> | Control<Pick<FormDataType, 'email' | 'password'>>;
+    control: Control<FormDataType>;
     errors: Record<string, FieldError>;
     watch: (value: string) => string;
   };

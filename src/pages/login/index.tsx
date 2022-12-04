@@ -17,7 +17,7 @@ function Login() {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<Pick<FormDataType, 'email' | 'password'>>({
+  } = useForm<FormDataType>({
     defaultValues: {
       email: '',
       password: '',
@@ -28,7 +28,7 @@ function Login() {
 
   const goToSignUp = () => navigation.navigate('SignUp');
 
-  const onSubmit = (data: Pick<FormDataType, 'email' | 'password'>) => dispatch(login(data));
+  const onSubmit = async (data: FormDataType) => dispatch(login(data));
 
   return (
     <AuthenticationLayout

@@ -24,7 +24,7 @@ const Forms = ({ control, title, errors, watch }: PropsType) => {
 
   return (
     <View>
-      {title === 'Sign Up' && (
+      {/* {title === 'Sign Up' && (
         <Input
           autoComplete="name"
           error={errors.name?.message}
@@ -35,7 +35,7 @@ const Forms = ({ control, title, errors, watch }: PropsType) => {
           }}
           name="name"
         />
-      )}
+      )} */}
       <Input
         autoComplete="email"
         control={control}
@@ -66,7 +66,7 @@ const Forms = ({ control, title, errors, watch }: PropsType) => {
         handlePasswordVisibility={handlePasswordVisibility}
       />
 
-      {title === 'Sign Up' && (
+      {/* {title === 'Sign Up' && (
         <>
           <Input
             placeholder="Confirm Password"
@@ -102,7 +102,7 @@ const Forms = ({ control, title, errors, watch }: PropsType) => {
             name="phone"
           />
         </>
-      )}
+      )} */}
     </View>
   );
 };

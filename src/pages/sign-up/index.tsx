@@ -3,10 +3,10 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch } from 'src/store';
-import { signUp } from 'src/store/auth';
 import { RootStackParams } from 'src/entities/navigation';
 import { FormDataType } from 'src/services/http/auth';
+import { useAppDispatch } from 'src/store';
+import { signUp } from 'src/store/auth';
 
 import AuthenticationLayout from '../../shared/ui/authentication-layout';
 import styles from './styles';
@@ -22,14 +22,11 @@ const SignUp = () => {
   } = useForm<FormDataType>({
     defaultValues: {
       email: '',
-      name: '',
-      phone: '',
       password: '',
-      password_confirmation: '',
     },
   });
 
-  const onSubmit = (data: FormDataType) => dispatch(signUp(data));
+  const onSubmit = async (data: FormDataType) => dispatch(signUp(data));
 
   const goToLogin = () => navigation.navigate('Login');
 

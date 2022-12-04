@@ -15,10 +15,7 @@ export const authAPI = {
   },
 };
 
-export type FormDataType = Record<
-  'name' | 'email' | 'phone' | 'password' | 'password_confirmation',
-  string
->;
+export type FormDataType = Record<'email' | 'password', string>;
 
 type ResponseType = {
   errors: string[];

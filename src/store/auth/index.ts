@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import axios, { AxiosError } from 'axios';
-import { authAPI, FormDataType, LoginResponseType } from 'src/services/http/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { FormDataType, LoginResponseType } from 'src/services/http/auth';
 
+import { auth } from '../../../firebase';
 export interface AuthState {
-  isLoggedIn: boolean;
   error: string;
   isLoading: boolean;
   token: string | null;
@@ -12,42 +12,35 @@ export interface AuthState {
 }
 
 const initialState: AuthState = {
-  isLoggedIn: true,
   error: '',
   isLoading: false,
   token: null,
   user: null,
 };
 
-export const signUp = createAsyncThunk('auth/signUp', async (formData: FormDataType, thunkAPI) => {
-  try {
-    const data = await authAPI.signUp(formData);
-    thunkAPI.dispatch(setIsLoggedIn(true));
-    return data;
-  } catch (e) {
-    const err = e as Error | AxiosError<{ message: string }>;
-    if (axios.isAxiosError(err)) {
-      const error = err.response?.data ? err.response.data.message : err.message;
-      thunkAPI.dispatch(setAuthError(error));
+export const signUp = createAsyncThunk(
+  'auth/signUp',
+  async ({ email, password }: FormDataType, thunkAPI) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      if (error instanceof Error) {
+        thunkAPI.dispatch(setAuthError(error.message));
+      }
+    } finally {
+      thunkAPI.dispatch(setIsLoading(false));
     }
-  } finally {
-    thunkAPI.dispatch(setIsLoading(false));
-  }
-});
+  },
+);
 
 export const login = createAsyncThunk(
   'auth/login',
-  async (formData: Pick<FormDataType, 'email' | 'password'>, thunkAPI) => {
-    thunkAPI.dispatch(setIsLoading(true));
+  async ({ email, password }: FormDataType, thunkAPI) => {
     try {
-      const data = await authAPI.signIn(formData);
-      thunkAPI.dispatch(setIsLoggedIn(true));
-      return data;
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (e) {
-      const err = e as Error | AxiosError<{ message: string }>;
-      if (axios.isAxiosError(err)) {
-        const error = err.response?.data ? err.response.data.message : err.message;
-        thunkAPI.dispatch(setAuthError(error));
+      if (e instanceof Error) {
+        thunkAPI.dispatch(setAuthError(e.message));
       }
     } finally {
       thunkAPI.dispatch(setIsLoading(false));
@@ -59,9 +52,6 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setIsLoggedIn: (state, action: PayloadAction<AuthState['isLoggedIn']>) => {
-      state.isLoggedIn = action.payload;
-    },
     setAuthError: (state, action: PayloadAction<AuthState['error']>) => {
       state.error = action.payload;
     },
@@ -73,19 +63,12 @@ export const authSlice = createSlice({
     builder.addCase(signUp.pending, state => {
       state.isLoading = true;
     });
-    builder.addCase(signUp.fulfilled, (state, action) => {
-      state.token = action.payload.token;
-    });
-    builder.addCase(signUp.rejected, (state, action) => {
-      console.log({ action, state });
-      // state.error = action.payload.error;
-    });
-    builder.addCase(login.fulfilled, (state, action) => {
-      state.user = action.payload.result;
+    builder.addCase(login.pending, state => {
+      state.isLoading = true;
     });
   },
 });
 
-export const { setIsLoggedIn, setAuthError, setIsLoading } = authSlice.actions;
+export const { setAuthError, setIsLoading } = authSlice.actions;
 
 export default authSlice.reducer;
