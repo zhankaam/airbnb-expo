@@ -19,6 +19,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     backgroundColor: 'white',
     position: 'absolute',
-    height: 54,
+    height: 100,
   },
 });
